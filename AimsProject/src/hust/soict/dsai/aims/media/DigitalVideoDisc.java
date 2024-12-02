@@ -1,13 +1,10 @@
 package AimsProject.src.hust.soict.dsai.aims.media;
 
-public class DigitalVideoDisc extends Media {
-    private String director;
-    private int length;
-
-    private static int nbDigitalVideoDiscs = 0; // Tracks total DVDs created
+public class DigitalVideoDisc extends Disc {
+    private static int nbDigitalVideoDiscs = 0;
 
     public DigitalVideoDisc(String title) {
-        super(++nbDigitalVideoDiscs, title, null, 0); // Initialize in the superclass
+        super(++nbDigitalVideoDiscs, title, null, 0);
     }
 
     public DigitalVideoDisc(String category, String title, double cost) {
@@ -16,41 +13,23 @@ public class DigitalVideoDisc extends Media {
 
     public DigitalVideoDisc(String director, String category, String title, double cost) {
         super(++nbDigitalVideoDiscs, title, category, (float) cost);
-        this.director = director;
+        setDirector(director);
     }
 
     public DigitalVideoDisc(String title, String category, String director, int length, double cost) {
-        super(++nbDigitalVideoDiscs, title, category, (float) cost);
-        this.director = director;
-        this.length = length;
-    }
-
-    public String getDirector() {
-        return director;
-    }
-
-    public void setDirector(String director) {
-        this.director = director;
-    }
-
-    public int getLength() {
-        return length;
-    }
-
-    public void setLength(int length) {
-        this.length = length;
+        super(++nbDigitalVideoDiscs, title, category, (float) cost, length, director);
     }
 
     public boolean isMatch(String title) {
         return getTitle() != null && getTitle().equalsIgnoreCase(title);
     }
-
+    
     @Override
     public String toString() {
         return "DVD - " + (getTitle() != null ? getTitle() : "Unknown Title") + " - "
                 + (getCategory() != null ? getCategory() : "Unknown Category") + " - "
-                + (director != null ? director : "Unknown Director") + " - "
-                + (length > 0 ? length + " mins" : "Unknown Length") + ": "
+                + (getDirector() != null ? getDirector() : "Unknown Director") + " - "
+                + (getLength() > 0 ? getLength() + " mins" : "Unknown Length") + ": "
                 + getCost() + " $";
     }
 }
