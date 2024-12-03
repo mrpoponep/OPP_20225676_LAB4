@@ -10,17 +10,15 @@ public class Aims {
         DigitalVideoDisc dvd2 = new DigitalVideoDisc("Comedy", "Movie 2", 12.99);
         DigitalVideoDisc dvd3 = new DigitalVideoDisc("Comedy", "Movie 3", 1.11);
 
-        DigitalVideoDisc[] dvds = {dvd1, dvd2, dvd3};
-
-        cart.addMedia(dvds);
+        cart.addMedia(dvd1);
+        cart.addMedia(dvd2);
+        cart.addMedia(dvd3);
 
         System.out.println("");
 
         cart.removeMedia(dvd1);
-        System.out.println("Total cost after removing dvd1: " + cart.totalCost());
-        cart.printCart();
+        cart.displayCart();
 
-        cart.searchMedia("Movie 2");
-        cart.searchMedia(3);
+        cart.findMediaByTitle("Movie 2");
     }
 }

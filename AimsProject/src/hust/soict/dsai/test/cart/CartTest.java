@@ -14,11 +14,8 @@ public class CartTest {
         cart.addMedia(dvd2);
         cart.addMedia(dvd3);
     
-        System.out.println("\nSearch by ID:");
-        cart.searchMedia(2);
-    
         System.out.println("\nSearch by Title:");
-        cart.searchMedia("Jungle");
+        cart.findMediaByTitle("Jungle");
     }
     
 }
