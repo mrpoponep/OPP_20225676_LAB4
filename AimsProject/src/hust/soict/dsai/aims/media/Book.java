@@ -4,6 +4,12 @@ import java.util.ArrayList;
 public class Book extends Media {
     private ArrayList<String> authors = new ArrayList<>();
 
+    @Override
+    public String toString() {
+        return "Book [authors=" + authors + ", getId()=" + getId() + ", getTitle()=" + getTitle() + ", getCategory()="
+                + getCategory() + ", getCost()=" + getCost() + ", getAuthors()=" + getAuthors() + "]";
+    }
+
     public Book(int id, String title, String category, float cost) {
         super(id, title, category, cost);
     }
