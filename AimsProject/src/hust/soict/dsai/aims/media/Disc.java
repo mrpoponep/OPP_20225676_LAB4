@@ -11,6 +11,13 @@ public class Disc extends Media {
         this.director = director;
     }
 
+    @Override
+    public String toString() {
+        return "Disc [length=" + length + ", director=" + director + ", getId()=" + getId() + ", getLength()="
+                + getLength() + ", getTitle()=" + getTitle() + ", getDirector()=" + getDirector() + ", getCategory()="
+                + getCategory() + ", getCost()=" + getCost() + "]";
+    }
+
     public Disc(int id, String title, String category, float cost) {
         super(id, title, category, cost);
     }

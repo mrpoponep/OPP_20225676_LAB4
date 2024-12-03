@@ -53,4 +53,14 @@ public abstract class Media {
     public boolean isMatch(String title) {
         return getTitle() != null && getTitle().equalsIgnoreCase(title);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null || getClass() != obj.getClass())
+            return false;
+        Media media = (Media) obj;
+        return title != null && title.equals(media.title);
+    }
 }
