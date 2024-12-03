@@ -1,31 +1,30 @@
 package AimsProject.src.hust.soict.dsai.aims.store;
 
 import java.util.ArrayList;
-
-import AimsProject.src.hust.soict.dsai.aims.media.DigitalVideoDisc;
+import AimsProject.src.hust.soict.dsai.aims.media.Media;
 
 public class Store {
-    private ArrayList<DigitalVideoDisc> itemsInStore;
+    private ArrayList<Media> itemsInStore;
 
     public Store() {
         this.itemsInStore = new ArrayList<>();
     }
 
-    public void addDVD(DigitalVideoDisc dvd) {
-        if (dvd != null) {
-            itemsInStore.add(dvd);
-            System.out.println("The DVD \"" + dvd.getTitle() + "\" has been added to the store.");
+    public void addMedia(Media media) {
+        if (media != null) {
+            itemsInStore.add(media);
+            System.out.println("The media \"" + media.getTitle() + "\" has been added to the store.");
         } else {
-            System.out.println("Cannot add a null DVD to the store.");
+            System.out.println("Cannot add a null media to the store.");
         }
     }
 
-    public void removeDVD(DigitalVideoDisc dvd) {
-        if (itemsInStore.contains(dvd)) {
-            itemsInStore.remove(dvd);
-            System.out.println("The DVD \"" + dvd.getTitle() + "\" has been removed from the store.");
+    public void removeMedia(Media media) {
+        if (itemsInStore.contains(media)) {
+            itemsInStore.remove(media);
+            System.out.println("The media \"" + media.getTitle() + "\" has been removed from the store.");
         } else {
-            System.out.println("The DVD \"" + dvd.getTitle() + "\" is not found in the store.");
+            System.out.println("The media \"" + media.getTitle() + "\" is not found in the store.");
         }
     }
 

@@ -10,15 +10,15 @@ public class CartTest {
         DigitalVideoDisc dvd2 = new DigitalVideoDisc("Cinderella");
         DigitalVideoDisc dvd3 = new DigitalVideoDisc("Jungle Book");
     
-        cart.addDigitalVideoDisc(dvd1);
-        cart.addDigitalVideoDisc(dvd2);
-        cart.addDigitalVideoDisc(dvd3);
+        cart.addMedia(dvd1);
+        cart.addMedia(dvd2);
+        cart.addMedia(dvd3);
     
         System.out.println("\nSearch by ID:");
-        cart.searchDVD(2);
+        cart.searchMedia(2);
     
         System.out.println("\nSearch by Title:");
-        cart.searchDVD("Jungle");
+        cart.searchMedia("Jungle");
     }
     
 }

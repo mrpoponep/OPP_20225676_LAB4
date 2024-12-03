@@ -1,6 +1,6 @@
 package AimsProject.src.hust.soict.dsai.aims.media;
 
-public class DigitalVideoDisc extends Disc implements Playable{
+public class DigitalVideoDisc extends Disc implements Playable {
     private static int nbDigitalVideoDiscs = 0;
 
     public DigitalVideoDisc(String title) {
@@ -20,10 +20,6 @@ public class DigitalVideoDisc extends Disc implements Playable{
         super(++nbDigitalVideoDiscs, title, category, (float) cost, length, director);
     }
 
-    public boolean isMatch(String title) {
-        return getTitle() != null && getTitle().equalsIgnoreCase(title);
-    }
-    
     @Override
     public String toString() {
         return "DVD - " + (getTitle() != null ? getTitle() : "Unknown Title") + " - "

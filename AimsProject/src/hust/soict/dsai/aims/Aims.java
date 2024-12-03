@@ -12,15 +12,15 @@ public class Aims {
 
         DigitalVideoDisc[] dvds = {dvd1, dvd2, dvd3};
 
-        cart.addDigitalVideoDisc(dvds);
+        cart.addMedia(dvds);
 
         System.out.println("");
 
-        cart.removeDigitalVideoDisc(dvd1);
+        cart.removeMedia(dvd1);
         System.out.println("Total cost after removing dvd1: " + cart.totalCost());
         cart.printCart();
 
-        cart.searchDVD("Movie 2");
-        cart.searchDVD(3);
+        cart.searchMedia("Movie 2");
+        cart.searchMedia(3);
     }
 }

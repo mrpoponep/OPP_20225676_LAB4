@@ -49,4 +49,8 @@ public abstract class Media {
     public String toString() {
         return "Media [id=" + id + ", title=" + title + ", category=" + category + ", cost=" + cost + "]";
     }
+
+    public boolean isMatch(String title) {
+        return getTitle() != null && getTitle().equalsIgnoreCase(title);
+    }
 }
