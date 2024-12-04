@@ -1,3 +1,41 @@
-Mặc dù cả hai phương pháp đều hợp lệ, nhưng DigitalVideoDisc... (đối số biến số) được ưu tiên hơn nhờ tính tiện lợi và linh hoạt của nó. Cách này giúp việc gọi phương thức trở nên đơn giản và phù hợp hơn với các thực tiễn hiện đại của Java khi xử lý số lượng đối số thay đổi.
-Sau khi gọi swap(jungleDVD, cinderellaDVD), tiêu đề của hai đối tượng không thay đổi vì Java truyền tham chiếu theo giá trị, chỉ hoán đổi các bản sao tham chiếu trong phạm vi hàm, không ảnh hưởng đến tham chiếu gốc bên ngoài. Do đó, các đối tượng ban đầu vẫn giữ nguyên trạng thái.
-Sau khi gọi changeTitle(jungleDVD, cinderellaDVD.getTitle()), tiêu đề của JungleDVD thay đổi vì phương thức này thao tác trực tiếp lên đối tượng mà tham chiếu jungleDVD trỏ tới. Trong Java, khi truyền một đối tượng vào hàm, tham chiếu đến đối tượng đó được sử dụng, nên các thay đổi trên thuộc tính của đối tượng sẽ được phản ánh ra bên ngoài.
+Lớp nào nên triển khai giao diện Comparable?
+Lớp Media nên triển khai giao diện Comparable, vì đây là lớp cha của tất cả các loại phương tiện (ví dụ: Book, CompactDisc, DVD) và chứa các thuộc tính chung (title, cost) được sử dụng để so sánh.
+
+Làm thế nào để triển khai phương thức compareTo()?
+Để triển khai phương thức compareTo() trong lớp Media:
+
+Thứ tự sắp xếp chính là theo title (chữ cái A-Z).
+Nếu hai đối tượng có cùng title, thì so sánh theo cost (giảm dần).
+Cách triển khai:
+
+@Override
+public int compareTo(Media other) {
+    // So sánh theo title
+    int titleComparison = this.title.compareToIgnoreCase(other.title);
+    if (titleComparison != 0) {
+        return titleComparison;
+    }
+
+    // Nếu title giống nhau, so sánh theo cost (giảm dần)
+    return Float.compare(other.cost, this.cost);
+}
+
+Có thể có hai quy tắc sắp xếp (ví dụ: theo title rồi cost, và theo cost rồi title) với Comparable không?
+Không, giao diện Comparable chỉ cho phép một thứ tự tự nhiên được định nghĩa bởi phương thức compareTo().
+Để có nhiều quy tắc sắp xếp, bạn cần sử dụng giao diện Comparator để có sự linh hoạt.
+
+Ví dụ:
+
+Media.COMPARE_BY_TITLE_COST để sắp xếp theo title, sau đó cost.
+Media.COMPARE_BY_COST_TITLE để sắp xếp theo cost, sau đó title.
+Khi sử dụng Comparable, cách sắp xếp bị khóa vào một quy tắc duy nhất.
+
+Làm thế nào để xử lý DVD với quy tắc sắp xếp khác biệt?
+Nếu DVD có quy tắc sắp xếp riêng (ví dụ: theo title, sau đó giảm dần theo độ dài, và cuối cùng theo cost), bạn có thể ghi đè phương thức compareTo() trong lớp DVD.
+
+Tóm tắt ưu điểm và hạn chế
+
+Phương pháp	Ưu điểm	Hạn chế
+Comparable	- Đơn giản để định nghĩa một thứ tự tự nhiên.	- Giới hạn chỉ có một quy tắc sắp xếp.
+Comparator	- Cho phép nhiều quy tắc sắp xếp linh hoạt.	- Yêu cầu các đối tượng comparator riêng biệt.
+Đối với các yêu cầu sắp xếp phức tạp như đã mô tả, việc sử dụng Comparator thường sẽ là lựa chọn tốt hơn.
